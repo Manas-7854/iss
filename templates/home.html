@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    .Images{
+        display: flex;
+        overflow-x: auto;
+    }
+    .Images img {
+      max-width: 100%;
+      max-height: 150px;
+      margin: 10px;
+    }
+</style>
+
+<body>
+    <header style="background-color: #222831;">
+        <a href="{{url_for('logout')}}"><button>SignOut</button></a>
+        <a href="{{url_for('upload')}}"><button>Upload Images</button></a>
+        <a href="{{url_for('edit')}}"><button>Create Video</button></a>
+    </header>
+    <h1>welcome {{username}}</h1>
+    <!-- <img src="/image/1" alt="Image"> -->
+    <!-- {% for image in images %}
+    <img src="{{ url_for('send_image', image_id=image.getvalue().decode('utf-8')) }}" alt="Image">
+    {% endfor %} -->
+    <div style="background-color: #d0d0d0;">
+
+        <h2 style="text-align: center;">Uploaded Images</h2>
+        <div class="Images" >
+            {% for i in range(total_images) %}
+                <img id={{i}} src="data:image/jpeg;base64,{{ images_data[i] }}" alt="Image">
+            {% endfor %}
+    </div>
+    </div>
+
+    <script>
+        var images_section = document.querySelectorAll('.Images');
+
+        // print(images_section.innerHTML);
+
+         images_section.forEach(image => {
+                // Clone the selected image and remove the border
+                console.log((image.id));
+            });
+    </script>
+</body>
+
+</html>
